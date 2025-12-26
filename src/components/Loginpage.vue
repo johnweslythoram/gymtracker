@@ -132,7 +132,7 @@ export default {
           return
         }
 
-        localStorage.setItem('TrackerEmail', token)
+        localStorage.setItem('TrackerEmail', email)
 
         console.log('User:', user)
       } catch (error) {
@@ -162,3 +162,4 @@ button:disabled {
   opacity: 0.6;
 }
 </style>
+

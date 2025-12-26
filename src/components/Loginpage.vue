@@ -119,6 +119,7 @@ export default {
 
         const email = response.data.data.email
         console.log(email)
+        localStorage.setItem('TrackerEmail', email)
         const currentStep = response.data.data.current_step
         if (currentStep === 1) {
           this.$router.push('personalDetails')
@@ -126,13 +127,35 @@ export default {
         if (currentStep === 2) {
           this.$router.push('fitnessdetails')
         }
+        if(response.data.data.currentphaseName === null){
+        this.$router.push({
+          path: '/weight',
+          query: {
+            add : true
+          }
+        })
+      }
+       if (response.data.data.currentDiet === null) {
+        this.$router.push(`/addDiet`)
+      } 
+      if (response.data.data.currentWorkout === null) {
+        if (this.next) {
+        this.$router.push({
+          path: `/addworkouts`,
+          query: {
+            from: true,
+          },
+        })
+      }
+      }
+      this.$router.push('/dashboard')
 
         if (!token) {
           this.apiError = 'Invalid server response. Try again!'
           return
         }
 
-        localStorage.setItem('TrackerEmail', email)
+        
 
         console.log('User:', user)
       } catch (error) {
@@ -162,4 +185,5 @@ button:disabled {
   opacity: 0.6;
 }
 </style>
+
 

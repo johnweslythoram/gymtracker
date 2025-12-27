@@ -3,8 +3,8 @@
     <div class="loader-overlay" v-if="loading">
       <div class="loader"></div>
     </div>
-    <div class="m-2">
-      <h1 class="text-center fw-bolder">Bulking phase</h1>
+    <div class="m-2" v-if="addPhase">
+      <h1 class="text-center fw-bolder">All Weights</h1>
     </div>
     <div class="row m-1 mt-3" v-if="addPhase">
       <div class="col-12">
@@ -71,6 +71,9 @@
       </p>
     </div>
     <div v-if="!addPhase" class="m-2 mt-5">
+      <div>
+        <h1>Enter all Details</h1>
+      </div>
       <div class="mb-3">
         <label class="form-label">Current Weight</label>
         <input
@@ -101,11 +104,11 @@
         </small>
       </div>
       <div class="mb-3">
-        <label class="form-label">Phase Title</label>
+        <label class="form-label">Goal Name(Your Choice)</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Phase Title"
+          placeholder="Goal Name(Your Choice)"
           v-model="currentnewPhasename"
         />
         <small class="text-danger" v-if="errors.currentnewPhasename">
@@ -350,3 +353,4 @@ export default {
   bottom: 80px;
 }
 </style>
+

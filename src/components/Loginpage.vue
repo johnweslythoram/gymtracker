@@ -123,9 +123,11 @@ export default {
         const currentStep = response.data.data.current_step
         if (currentStep === 1) {
           this.$router.push('personalDetails')
+          return
         }
         if (currentStep === 2) {
           this.$router.push('fitnessdetails')
+          return
         }
         if(response.data.data.currentphaseName === null){
         this.$router.push({
@@ -134,19 +136,20 @@ export default {
             add : true
           }
         })
+          return
       }
        if (response.data.data.currentDiet === null) {
         this.$router.push(`/addDiet`)
+         return
       } 
       if (response.data.data.currentWorkout === null) {
-        if (this.next) {
         this.$router.push({
           path: `/addworkouts`,
           query: {
             from: true,
           },
         })
-      }
+      return
       }
       this.$router.push('/dashboard')
 
@@ -185,5 +188,6 @@ button:disabled {
   opacity: 0.6;
 }
 </style>
+
 
 

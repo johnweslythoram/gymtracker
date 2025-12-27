@@ -154,6 +154,7 @@ export default {
 
 
       const response = await this.$axios.post('api/tracker/fitnessDetails', payload)
+        const set_goal = await this.$axios.post('api/tracker/set_goal', payload1)
 
       console.log(response.data)
       console.log(response.data.data)
@@ -193,3 +194,4 @@ export default {
   font-size: 13px;
 }
 </style>
+
